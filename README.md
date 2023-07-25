@@ -37,6 +37,7 @@
 
 <img width="781" alt="image" src="https://github.com/jongheonleee/spring_notice_board/assets/87258372/3dbe28d3-5be4-48d5-a715-1588748dcdc5">
 <br/>
+
 - dto -> entity로 변환해주어야함
 - dto는 사용자가 입력한 데이터만을 담는 것이라면 entity는 db에 저장될 테이블을 dto 기반으로 만들어서 db에 저장할 수 있게끔 도와줌
 - dto에 각 필드를 column으로 만들어서 테이블을 제작함
