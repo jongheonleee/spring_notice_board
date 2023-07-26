@@ -24,4 +24,11 @@ public class Member {
     @Column
     private String password;
 
+    @Column
+    private String name;
+    @Column
+    private Integer age;
+
+
+
 }

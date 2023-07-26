@@ -10,8 +10,10 @@ public class MemberForm {
 
     private String email;
     private String password;
+    private String name;
+    private Integer age;
 
     public Member toEntity() {
-        return new Member(null, email, password);
+        return new Member(null, email, password, name, age);
     }
 }
