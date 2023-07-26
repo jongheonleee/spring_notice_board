@@ -46,3 +46,32 @@
 - 다양한 기술들이 존재하기 때문에 Repository를 인터페이스로 선언하여 변경에 용이하게 함
 
 ### 간단하게 정리하기 클라이언트가 서버로 데이터를 보낼 때 해당 데이터는 dto, entity 형식으로 보낸다, 이때 dto는 클라이언트가 입력한 데이터를 보관하는 용도고 entity는 dto를 기반으로 테이블을 만들어서 db에 저장하는 용도임
+
+<br/>
+
+### 3일차 - (4) 롬복과 리팩토링, (5) 게시글 읽기 
+
+### 1. 코드 간소화하기
+- @AllArgsConstructor : 모든 인스턴스 필드를 초기화 해주는 생성자
+- @ToString : toString() 구현
+- @NoArgsConstructor : 기본 생성자
+- @Slf4j : 로깅 인스턴스 생성
+- 형식적으로 작성해야하는 코드들을 롬복을 통해서 생략할 수 있음
+
+
+### 2. 하나 또는 모든 데이터 읽기
+
+![image](https://github.com/jongheonleee/spring_notice_board/assets/87258372/8579ab20-9447-42fd-a86e-eaa239c7f611)
+<br/>
+![KakaoTalk_Image_2023-07-26-16-18-41](https://github.com/jongheonleee/spring_notice_board/assets/87258372/5ca235ae-737a-4a5c-b257-45b275bd1c85)
+<br/>
+
+- 사용자의 요청이 controller에 들어오고 controller에서는 url에 붙어있는 id 정보를 @PathVariable을 통해 가져와서 어떤 데이터를 조회하는지 Repository에 알려줌
+- 이제 Repository는 전달받은 id 값에 매칭되는 데이터를 DB에서 가져오는데 이때, Entity 형태로 가져옴, 하지만 findById()의 반환 타입은 Optional<T>이기 때문에 .orElse(null)을 사용해줘야함
+- DB에서 가져온 데이터를 Model에 보관하고 View는 보관된 데이터를 통해서 페이지를 렌더해줌
+- 모든 데이터를 가져올 때는 findAll() 를 사용하면되고 이 역시도 반환타입이 Iterator<T>이기 때문에 인터페이스에서 해당 메서드를 오버라이딩해줘서 내가 원하는 데이터 타입을 반환할 수 있도록 해줌
+
+
+
+
+
