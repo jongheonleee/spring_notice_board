@@ -79,7 +79,7 @@ public class ArticleController {
     }
 
     @PostMapping("/articles/update")
-    public String update(ArticleForm form, Model model) {
+    public String update(ArticleForm form) {
         log.info(form.toString());
         // 1. DTO -> Entity
         Article articleEntity = form.toEntity();

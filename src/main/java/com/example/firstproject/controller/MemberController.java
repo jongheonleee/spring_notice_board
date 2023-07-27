@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -52,14 +53,42 @@ public class MemberController  {
 
     @GetMapping("/members")
     public String index(Model model) {
-        // 1. 데이터 가져오기
+        // 1. 데이터 가져옴
         ArrayList<Member> memberEntityList = memberRepository.findAll();
-        // 2. 모델에 데이터 보관하기
+        // 2. 모델에 데이터 보관
         model.addAttribute("memberList", memberEntityList);
         // 3. 뷰에서 데이터 렌더링하기
         return "members/index";
     }
 
 
+    @GetMapping("/members/{id}/edit")
+    public String edit(@PathVariable Long id, Model model) {
+        // 1. 데이터 가져옴
+        Member memberEntity = memberRepository.findById(id).orElse(null);
+        // 2. 데이터 보관
+        model.addAttribute("member", memberEntity);
+        // 3. 수정페이지 렌더링
+        return "/members/edit";
+    }
+
+    @PostMapping("/members/update")
+    public String update(MemberForm form) {
+        log.info(form.toString());
+        // 1. DTO -> Entity
+        Member memberEntity = form.toEntity();
+        log.info(memberEntity.toString());
+
+        // 2. Entity DB에 저장
+        Member target = memberRepository.findById(memberEntity.getId()).orElse(null);
+
+        if (target != null) {
+            memberRepository.save(memberEntity);
+        }
+
+        // 3. 수정 결과 페이지로 리다이렉트
+        return "redirect:/members/" + memberEntity.getId();
+
+    }
 
 }
