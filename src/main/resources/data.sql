@@ -32,3 +32,6 @@ INSERT INTO comment(article_id, nickname, body) VALUES(6, 'lee', '알고리즘 �
 INSERT INTO comment(article_id, nickname, body) VALUES(6, 'jay', '헬스');
 INSERT INTO comment(article_id, nickname, body) VALUES(6, 'park', '미술');
 
+INSERT INTO pizza(name, price) VALUES('페페로니 피자', 25900);
+INSERT INTO pizza(name, price) VALUES('불고기 피자', 30000);
+INSERT INTO pizza(name, price) VALUES('포테이토 피자', 26000);
