@@ -13,7 +13,8 @@ import lombok.ToString;
 @ToString
 public class CommentDTO {
     private Long id;
-    @JsonProperty("article_id")
+
+    @JsonProperty("articleId")
     private Long articleId;
     private String nickname;
     private String body;
