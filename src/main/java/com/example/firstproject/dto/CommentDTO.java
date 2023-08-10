@@ -14,7 +14,6 @@ import lombok.ToString;
 public class CommentDTO {
     private Long id;
 
-    @JsonProperty("articleId")
     private Long articleId;
     private String nickname;
     private String body;
